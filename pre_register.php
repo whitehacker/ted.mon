@@ -107,7 +107,7 @@
       <div class="row">
           <div class="col-xs-12">
               <div class="form-wrap">
-                <h1>برا راجستر نمودن خویش به سیستم شما باید کود را داخل نمایید!</h1>
+                <h1>برای راجستر نمودن خویش به سیستم شما باید کود را داخل نمایید!</h1>
                     <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
                         
                         <div class="form-group">
@@ -117,7 +117,7 @@
                        
                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="داخل سیستم شوید!">
                     </form>
-                    <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">کود چی است؟</a>
+                    
                     <hr>
               </div>
         </div> <!-- /.col-xs-12 -->

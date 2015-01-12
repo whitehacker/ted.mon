@@ -9,16 +9,15 @@
   </head>
 
   <body>
-    <?php include("includes/navbar.php"); ?>
+    <?php include("includes/indexnav.php"); ?>
 
-    <div class="container">
+    <div class="container text-center" style="margin-top:60px">
       <div class="row">
-        <div class="jumbotron">
-  <h1>خوش آمدید!</h1>
-  <p>...</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-</div>
-      </div>
+        <h2>سیستم نظارت و ارزیابی</h2>
+        <h3>ریاست عمومی تربیه معلم</h3>
+        <hr/>
+        <a href="pre_register.php" class="btn btn-primary">ثبت نام نمایید!</a>
+        <a href="login.php" class="btn btn-success">داخل سیستم شیود!</a>
     </div>
   </body>
   </html>

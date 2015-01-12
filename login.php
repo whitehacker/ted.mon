@@ -102,6 +102,7 @@
   </head>
 
   <body>
+    <?php include("includes/indexnav.php"); ?>
     <section id="login">
     <div class="container">
       <div class="row">
