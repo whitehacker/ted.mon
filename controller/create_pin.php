@@ -1,6 +1,6 @@
 <?php
 $pin=intval($_POST['pin']);
-mysql_connect("127.0.0.1","root","");
+mysql_connect("localhost","root","root");
 mysql_select_db("tedmon");
 $i=0;
 while($i < $pin){
