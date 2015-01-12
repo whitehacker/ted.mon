@@ -19,9 +19,25 @@ include("controller/pin_auth.php");
     <div class="container">
       <div class="row">
           <div class="col-xs-12">
+            
               <div class="form-wrap">
+                <?php
+          if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ) {
+            echo "<div class='alert alert-danger'>";
+            foreach($_SESSION['ERRMSG_ARR'] as $msg) {
+              echo "$msg <br/>"; 
+            }
+            echo "</div><br/>";
+          }
+          unset($_SESSION['ERRMSG_ARR']);
+          
+          if(isset($_SESSION['user_pin_need'])){
+            echo "<div class='alert alert-danger'>" . $_SESSION['user_pin_need'] . "</div><br/>";
+            }
+            unset($_SESSION['user_pin_need']);
+          ?>
                 <h1>حالا ثبت نام نمایی!</h1>
-                    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
+                    <form role="form" action="controller/member_reg.php" method="post" id="login-form" autocomplete="off">
                         <div class="form-group">
                             <label for="email" class="sr-only">اسم مکمل شما!</label>
                             <input type="text" name="email" id="email" class="form-control" placeholder="اسم و تخلص">
@@ -49,7 +65,7 @@ include("controller/pin_auth.php");
                             <span class="character-checkbox" onclick="showPassword()"></span>
                             <span class="label">شفر را نشان دهید!</span>
                         </div>
-                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="داخل سیستم شوید!">
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="معلومات را ثبت نمایید!">
                     </form>
                     
                     <hr>

@@ -5,7 +5,7 @@
 	//Check whether the session variable SESS_MEMBER_ID is present or not
 	if(!isset($_SESSION['SESS_USER_PIN']) || (trim($_SESSION['SESS_USER_PIN']) == '')) {
 		header("location:../register.php");
-		$_SESSION['user_pin_need']='In Order to access this Registration Page, You have to Enter a Valid Registration Code and then Proceed!';
+		$_SESSION['user_pin_need']='برای ثبت نام شما باید اول کود ثبت را داخل نمایید و بعدا به این صفحه مراجعه نمایید!';
 		exit();
 	}
 ?>

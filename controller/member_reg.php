@@ -44,35 +44,26 @@ include('inc/config.inc');
 	$confPass=clean($_POST['repass']);
 	
 	//Input Validations
-	if($username == '') {
-		$errmsg_arr[] = 'Login name missing';
-		$errflag = true;
-	}
+	
 	if($email == '') {
-		$errmsg_arr[] = 'Email Address missing';
+		$errmsg_arr[] = 'ایمیل آدرس خویش را بنویسید!';
 		$errflag = true;
 	}
 	if($pass !=''){
 	if(strlen($pass)<6) {
-		$errmsg_arr[] = 'Password is too short, Minimium 6 characters';
+		$errmsg_arr[] = 'شفر باید حد اقل شش حرف و عدد باشد!';
 		$errflag = true;
 	}
 	}
 	if($pass == '') {
-		$errmsg_arr[] = 'Password missing';
+		$errmsg_arr[] = 'شفر را بنویسید!';
 		$errflag = true;
 	}
-	if($confPass == '') {
-		$errmsg_arr[] = 'Confirm password missing';
-		$errflag = true;
-	}
-	if( strcmp($pass, $confPass) != 0 ) {
-		$errmsg_arr[] = 'Passwords do not match';
-		$errflag = true;
-	}
+	
+	
 	if($username !='' && $pass !=''){
 	if( strcmp($pass, $username) == 0 ) {
-		$errmsg_arr[] = 'Your Username and Passwords are the same, please enter another password, which does not match with your Username or Email';
+		$errmsg_arr[] = 'کلمات ایمیل و شفر شما یکسان بوده باید شفر متفاوت را داخل نمایید!';
 		$errflag = true;
 	}	
 	}
@@ -83,7 +74,7 @@ include('inc/config.inc');
 		$result = mysql_query($qry);
 		if($result) {
 			if(mysql_num_rows($result) > 0) {
-				$errmsg_arr[] = 'The Username is already in use, please use another one.';
+				$errmsg_arr[] = 'این ایمیل آدرس از قبل موجود میباشد!';
 				$errflag = true;
 			}
 			//will free all memory associated with the result identifier result. 
@@ -92,29 +83,13 @@ include('inc/config.inc');
 			die("Query failed");
 		}
 	}
-	
-	if($username != '') {
-		$qry = "SELECT * FROM perm_members WHERE email='$email'";
-		$result = mysql_query($qry);
-		if($result) {
-			if(mysql_num_rows($result) > 0) {
-				$errmsg_arr[] = 'The Email is already in the system | You are using someone else Email Address, Please Enter Your Valid Email.';
-				$errflag = true;
-			}
-			//will free all memory associated with the result identifier result. 
-		}
-		else {
-			die("Query failed");
-		}
-	}
-	
 	
 		//If there are input validations, redirect back to the registration form
 	if($errflag) {
 		$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
 		session_write_close();
 		//Write session data and end session
-		header("location: ../post_reg.php");
+		header("location: ../register.php");
 		exit();
 	}
 
@@ -126,35 +101,10 @@ include('inc/config.inc');
 
 // if suceesfully inserted data into database, send confirmation link to email 
 if($result) {
-			// send e-mail to ...
-		$to=$email;
-		
-		// Your subject
-		$subject="TECHWORKS - Your confirmation link here";
-		
-		// From
-		$header="from: info@technation.af";
-		
-		// Your message
-		$message="Your Comfirmation link \r\n";
-		$message.="Click on this link to activate your account \r\n";
-		$message.="http://works.technation.af/confirmation.php?passkey=$confirm_code";
-		
-		// send email
-		$sentmail = mail($to,$subject,$message,$header);
-		$_SESSION['SIGNUP_SUCCESS']='Thank you for submiting your information. We have sent you a confirmation Email that can be found on your Inbox or Spam folder. Check your Inbox';
 		unset($_SESSION['SESS_USER_PIN']);
-		header("location: ../index.php");
+		header("location: ../dashboard.php");
 		exit();
 	}else {
-		die("Not found your email in our database" . mysql_error());
-	}
-
-	// if your email succesfully sent
-	if($sentmail){
-	echo "Your Confirmation link Has Been Sent To Your Email Address.";
-	}
-	else {
-	echo "Cannot send Confirmation link to your e-mail address";
+		die("Error Occured!" . mysql_error());
 	}
 ?>

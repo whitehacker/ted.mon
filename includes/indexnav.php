@@ -22,7 +22,7 @@
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="../login.php">داخل سیستم شوید!</a></li>
+        <li><a href="login.php">داخل سیستم شوید!</a></li>
         <li><a href="pre_register.php">ثبت نام نمایید!</a></li>
         
       </ul>
