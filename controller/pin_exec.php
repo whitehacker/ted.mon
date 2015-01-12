@@ -38,7 +38,7 @@ session_start();
 	
 	//Input Validations
 	if($pin == '') {
-		$errmsg_arr[] = 'Registration Code is missing';
+		$errmsg_arr[] = 'شما شفر را داخل نه نموده اید!';
 		$errflag = true;
 	}
 	
@@ -49,7 +49,7 @@ session_start();
 		if($pin !=''){
 		$qry_val = mysql_query("SELECT * FROM pin_code WHERE code='$pin' AND status='Available'");
 		if(mysql_num_rows($qry_val) != 1) {
-			$errmsg_arr[] = 'Invalid Registration Code Or this registration code is already used or expired';
+			$errmsg_arr[] = 'این کود غلط و یا هم قبلا توسط شخص دیگری استفاده گردیده است!';
 			$errflag = true;
 		}else {
 			$update_pin=mysql_query("UPDATE pin_code SET status='Used' WHERE code='$pin'");
@@ -57,7 +57,7 @@ session_start();
 			session_regenerate_id();
 			$pin_code = mysql_fetch_assoc($qry_val);
 			$_SESSION['SESS_USER_PIN'] = $pin_code['code'];
-			header("location: ../post_reg.php");
+			header("location: ../register.php");
 			exit();
 			}
 		}	
@@ -65,7 +65,7 @@ session_start();
 		if($errflag) {
 		$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
 		session_write_close();
-		header("location: ../pre_reg.php");
+		header("location: ../pre_register.php");
 		exit();
 		}
 
