@@ -11,7 +11,7 @@
   :: Login Section
   -------------------------------------------------- */
 #login {
-    padding-top: 50px
+    padding-top: 70px
 }
 #login .form-wrap {
     width: 30%;
@@ -124,7 +124,7 @@
                         </div>
                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="داخل سیستم شوید!">
                     </form>
-                    <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">شفر خویش را فراموش نموده اید؟</a>
+                    <!-- <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">شفر خویش را فراموش نموده اید؟</a> -->
                     <hr>
               </div>
         </div> <!-- /.col-xs-12 -->

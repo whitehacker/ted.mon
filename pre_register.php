@@ -11,7 +11,7 @@
   :: Login Section
   -------------------------------------------------- */
 #login {
-    padding-top: 50px
+    padding-top: 70px
 }
 #login .form-wrap {
     width: 30%;
@@ -102,6 +102,7 @@
   </head>
 
   <body>
+    <?php include("includes/indexnav.php"); ?>
     <section id="login">
     <div class="container">
       <div class="row">
