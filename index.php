@@ -13,6 +13,7 @@
 
     <div class="container text-center" style="margin-top:60px">
       <div class="row">
+        <img src="img/moe.jpg" />
         <h2>سیستم نظارت و ارزیابی</h2>
         <h3>ریاست عمومی تربیه معلم</h3>
         <p>
