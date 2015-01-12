@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("controller/pin_auth.php");
+?>
 <!doctype html>
 <html lang="en">
   <head>
