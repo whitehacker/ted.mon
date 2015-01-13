@@ -38,13 +38,27 @@ include('inc/config.inc');
 	$confirm_code=md5(uniqid(rand())); 
 	
 	//Sanitize the POST values
-	$username = clean($_POST['uname']);
+	$full_name = clean($_POST['full_name']);
+	$aca_grade = clean($_POST['ac_degree']);
+	$phone = clean($_POST['phone']);
 	$email = clean($_POST['email']);
 	$pass = clean($_POST['pass']);
-	$confPass=clean($_POST['repass']);
+	
 	
 	//Input Validations
-	
+	if($full_name == '') {
+		$errmsg_arr[] = 'اسم مکمل خویش را بنویسید!';
+		$errflag = true;
+	}
+	if($aca_grade == '') {
+		$errmsg_arr[] = 'ربته علمی خویش را بنویسید!';
+		$errflag = true;
+	}
+	if($phone == '') {
+		$errmsg_arr[] = 'نمبر تلیفون را بنویسید!';
+		$errflag = true;
+	}
+
 	if($email == '') {
 		$errmsg_arr[] = 'ایمیل آدرس خویش را بنویسید!';
 		$errflag = true;
@@ -61,9 +75,9 @@ include('inc/config.inc');
 	}
 	
 	
-	if($username !='' && $pass !=''){
+	if($full_name !='' && $pass !=''){
 	if( strcmp($pass, $username) == 0 ) {
-		$errmsg_arr[] = 'کلمات ایمیل و شفر شما یکسان بوده باید شفر متفاوت را داخل نمایید!';
+		$errmsg_arr[] = 'شفر شما دارایا کلمات اسم شما میباشد شفر دیگری داخل نمایید!';
 		$errflag = true;
 	}	
 	}
@@ -95,7 +109,9 @@ include('inc/config.inc');
 
 	
 	//Create INSERT query
-	$qry = "INSERT INTO temp_members(username, email, password,confirm_code) VALUES('$username','$email','$pass','$confirm_code')";
+	mysql_query("SET names utf8");
+	mysql_query("SET char-set utf8");
+	$qry = "INSERT INTO perm_members(full_name, aca_degree, phone, email, pass) VALUES('$full_name', '$aca_grade', '$phone', '$email',md5('$pass'))";
 	$result = @mysql_query($qry);
 	
 

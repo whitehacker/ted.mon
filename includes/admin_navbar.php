@@ -22,7 +22,7 @@
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">خروج از سیستم</a></li>
+        <li><a href="controller/logout.php">خروج از سیستم</a></li>
         
       </ul>
     </div><!-- /.navbar-collapse -->

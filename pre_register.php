@@ -30,7 +30,7 @@ session_start();
           unset($_SESSION['ERRMSG_ARR']);
           
           if(isset($_SESSION['user_pin_need'])){
-            echo "<div class='alert alert-error'>" . $_SESSION['user_pin_need'] . "</div><br/>";
+            echo "<div class='alert alert-danger'>" . $_SESSION['user_pin_need'] . "</div><br/>";
             }
             unset($_SESSION['user_pin_need']);
           ?>
@@ -45,7 +45,7 @@ session_start();
                             <input type="password" name="pin" class="form-control" placeholder="شفر">
                         </div>
                        
-                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="داخل سیستم شوید!">
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="داخل صفحه ثبت نام شوید!">
                     </form>
                     
                     <hr>
@@ -57,16 +57,7 @@ session_start();
 
 
 
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <p>TEMIS &copy;- 2014</p>
-                <p>Powered by Teacher Education General Directorate</p>
-            </div>
-        </div>
-    </div>
-</footer>
+<?php include("includes/footer.php"); ?>
 <script>
 function showPassword() {
     

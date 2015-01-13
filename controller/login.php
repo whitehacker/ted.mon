@@ -33,16 +33,16 @@
 	}
 	
 	//Sanitize the POST values
-	$login = clean($_POST['secname']);
-	$password = clean($_POST['secpass']);
+	$login = clean($_POST['email']);
+	$password = clean($_POST['pass']);
 	
 	//Input Validations
 	if($login == '') {
-		$errmsg_arr[] = 'Login ID missing';
+		$errmsg_arr[] = 'ایمیل آدرس خویش را بنویسید!';
 		$errflag = true;
 	}
 	if($password == '') {
-		$errmsg_arr[] = 'Password missing';
+		$errmsg_arr[] = 'شفر خویش را بنویسید!';
 		$errflag = true;
 	}
 	
@@ -55,7 +55,7 @@
 	}
 	
 	//Create query
-	$qry="SELECT * FROM perm_members WHERE username='$login' AND password='".md5($_POST['secpass'])."'";
+	$qry="SELECT * FROM perm_members WHERE email='$login' AND pass='".md5($_POST['pass'])."'";
 	$result=mysql_query($qry);
 	
 	//Check whether the query was successful or not
@@ -65,10 +65,10 @@
 			session_regenerate_id();
 			$member = mysql_fetch_assoc($result);
 			$_SESSION['SESS_USER_ID'] = $member['id'];
-			$_SESSION['SESS_MEMBER_NAME'] = $member['username'];
+			$_SESSION['SESS_MEMBER_NAME'] = $member['email'];
 			//$_SESSION['SESS_MEMBER_LAST'] = $member['lastname'];
 			session_write_close();
-			header("location: ../members/");
+			header("location: ../dashboard.php");
 			exit();
 		}else {
 			//Login failed

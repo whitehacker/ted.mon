@@ -1,3 +1,6 @@
+<?php
+require_once('controller/auth.php');
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,12 +9,13 @@
     <link rel="stylesheet" href="css/font-awesome.css" />
     <script src="js/bootstrap-arabic.js"></script>
     <script src="js/jquery.js"></script>
+    <link rel="stylesheet" href="css/forms.css" />
   </head>
 
   <body>
     <?php include("includes/navbar.php"); ?>
 
-    <div class="container">
+    <div class="container text-center">
       <div class="row">
         <div class="jumbotron">
   <h1>خوش آمدید!</h1>
@@ -20,5 +24,10 @@
 </div>
       </div>
     </div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <?php include("includes/footer.php"); ?>
+  </div>
+</div>
   </body>
   </html>

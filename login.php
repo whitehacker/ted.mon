@@ -15,16 +15,27 @@
     <div class="container">
       <div class="row">
           <div class="col-xs-12">
+            <?php
+          if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ) {
+            echo "<div class='alert alert-danger'>";
+            foreach($_SESSION['ERRMSG_ARR'] as $msg) {
+              echo "$msg <br/>"; 
+            }
+            echo "</div><br/>";
+          }
+          unset($_SESSION['ERRMSG_ARR']);
+         
+          ?>
               <div class="form-wrap">
                 <h1>با استفاده از ایمیل آدرس خویش داخل سیستم شوید!</h1>
-                    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
+                    <form role="form" action="controller/login.php" method="post" id="login-form" autocomplete="off">
                         <div class="form-group">
                             <label for="email" class="sr-only">ایمیلی آدرس</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="ایمیل آدرس شما!">
+                            <input type="email" name="email" class="form-control" placeholder="ایمیل آدرس شما!">
                         </div>
                         <div class="form-group">
                             <label for="key" class="sr-only">شفر</label>
-                            <input type="password" name="key" id="key" class="form-control" placeholder="شفر">
+                            <input type="password" name="pass" class="form-control" placeholder="شفر">
                         </div>
                         <div class="checkbox">
                             <span class="character-checkbox" onclick="showPassword()"></span>
@@ -40,38 +51,7 @@
     </div> <!-- /.container -->
 </section>
 
-<div class="modal fade forget-modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">×</span>
-          <span class="sr-only">Close</span>
-        </button>
-        <h4 class="modal-title">Recovery password</h4>
-      </div>
-      <div class="modal-body">
-        <p>Type your email account</p>
-        <input type="email" name="recovery-email" id="recovery-email" class="form-control" autocomplete="off">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-custom">Recovery</button>
-      </div>
-    </div> <!-- /.modal-content -->
-  </div> <!-- /.modal-dialog -->
-</div> <!-- /.modal -->
-
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <p>TEMIS &copy;- 2014</p>
-                <p>Powered by Teacher Education General Directorate</p>
-            </div>
-        </div>
-    </div>
-</footer>
+<?php include("includes/footer.php"); ?>
 <script>
 function showPassword() {
     

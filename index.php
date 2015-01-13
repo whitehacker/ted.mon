@@ -27,5 +27,7 @@
         <a href="pre_register.php" class="btn btn-primary">ثبت نام نمایید!</a>
         <a href="login.php" class="btn btn-success">داخل سیستم شیود!</a>
     </div>
+    <br/>
+    <?php include("includes/footer.php"); ?>
   </body>
   </html>
